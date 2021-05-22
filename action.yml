@@ -1,6 +1,6 @@
-name: AWS S3 bucket synchronization (JS)
-description: Synchronize S3 bucket files
-author: raulanatol
+name: AWS S3 WebSite Synchronization
+description: Synchronize S3 website bucket files
+author: etc-tiago
 branding:
   color: green
   icon: upload-cloud
@@ -45,7 +45,7 @@ inputs:
   AWS_CLOUDFRONT_INVALIDATION_PATH:
     description: Path for the cloudfront invalidation
     required: false
-  
+
   WITH_WEBSITE_HTML:
     description: If true, the .html will copy and send both, with and without .html
     required: false
