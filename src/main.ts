@@ -106,7 +106,6 @@ const syncFolder = async (inputParameters: InputParameters) => {
     target,
     withWebsiteHtml
   } = inputParameters;
-  console.log('--------------------withWebsiteHtml: ', withWebsiteHtml);
   const s3Client = getS3Client(inputParameters);
 
   if (withDelete) {
@@ -129,25 +128,24 @@ const syncFolder = async (inputParameters: InputParameters) => {
           }
 
           const filename = filePath.replace(removeBasePath, '');
-          const key = join(target, filename);
-          console.log({
-            withWebsiteHtml,
-            last5: key.substr(key.length - 5),
-            res: key.substr(key.length - 5) === '.html'
-          });
-          if (withWebsiteHtml && key.substr(key.length - 5) === '.html') {
+          const keyJoin = join(target, filename);
+          const dotHTML = keyJoin.substr(keyJoin.length - 5) === '.html';
+
+          if (withWebsiteHtml && dotHTML) {
+            const key = keyJoin.substr(0, keyJoin.length - 5);
             s3Client.putObject(
               {
                 Bucket: awsBucketName,
-                Key: key.substr(0, key.length - 5),
+                Key: key,
                 Body: fileContent,
                 ContentType: 'text/html'
               },
               () => {
-                console.log(`Successfully uploaded '${filename}' to ${key}!`);
+                console.log(`Successfully uploaded '${filename}' to '${key}'`);
               }
             );
           } else {
+            const key = keyJoin;
             s3Client.putObject(
               {
                 Bucket: awsBucketName,
@@ -155,7 +153,7 @@ const syncFolder = async (inputParameters: InputParameters) => {
                 Body: fileContent
               },
               () => {
-                console.log(`Successfully uploaded '${filename}' to ${key}!`);
+                console.log(`Successfully uploaded '${filename}' to '${key}'`);
               }
             );
           }
