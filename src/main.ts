@@ -128,7 +128,11 @@ const syncFolder = async (inputParameters: InputParameters) => {
           }
 
           const filename = filePath.replace(removeBasePath, '');
-          const keyJoin = join(target, filename);
+          const keyJoinFilename = join(target, filename);
+          const keyJoin =
+            keyJoinFilename.substr(0, 1) === '/'
+              ? keyJoinFilename.substr(1)
+              : keyJoinFilename;
           const dotHTML = keyJoin.substr(keyJoin.length - 5) === '.html';
 
           if (withWebsiteHtml && dotHTML) {
