@@ -99,7 +99,14 @@ const emptyS3Folder = async (
 };
 
 const syncFolder = async (inputParameters: InputParameters) => {
-  const { source, withDelete, awsBucketName, target } = inputParameters;
+  const {
+    source,
+    withDelete,
+    awsBucketName,
+    target,
+    withWebsiteHtml
+  } = inputParameters;
+  console.log('--------------------withWebsiteHtml: ', withWebsiteHtml);
   const s3Client = getS3Client(inputParameters);
 
   if (withDelete) {
@@ -123,10 +130,7 @@ const syncFolder = async (inputParameters: InputParameters) => {
 
           const filename = filePath.replace(removeBasePath, '');
           const key = join(target, filename);
-          if (
-            inputParameters.withWebsiteHtml &&
-            key.substr(key.length - 5) === '.html'
-          ) {
+          if (withWebsiteHtml && key.substr(key.length - 5) === '.html') {
             s3Client.putObject(
               {
                 Bucket: awsBucketName,
