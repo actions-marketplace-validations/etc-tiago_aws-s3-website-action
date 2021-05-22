@@ -1,5 +1,5 @@
 {
-  "name": "aws-s3-website-action",
+  "name": "aws-s3-website-html-action",
   "version": "0.1.2",
   "private": true,
   "description": "Synchronize S3 bucket files with copy and remove .html",
