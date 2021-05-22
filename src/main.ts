@@ -130,6 +130,11 @@ const syncFolder = async (inputParameters: InputParameters) => {
 
           const filename = filePath.replace(removeBasePath, '');
           const key = join(target, filename);
+          console.log({
+            withWebsiteHtml,
+            last5: key.substr(key.length - 5),
+            res: key.substr(key.length - 5) === '.html'
+          });
           if (withWebsiteHtml && key.substr(key.length - 5) === '.html') {
             s3Client.putObject(
               {
