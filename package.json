@@ -26,6 +26,7 @@
   "dependencies": {
     "@actions/core": "1.2.7",
     "aws-sdk": "2.892.0",
+    "mime-types": "^2.1.30",
     "recursive-readdir": "2.2.2"
   },
   "devDependencies": {
