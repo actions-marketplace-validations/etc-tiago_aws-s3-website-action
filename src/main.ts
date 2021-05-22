@@ -35,7 +35,7 @@ const getInputParameters = (): InputParameters => ({
   awsRegion: getRequiredInput('AWS_REGION'),
   source: getRequiredInput('SOURCE'),
   withDelete: toBoolean(getInput('WITH_DELETE'), false),
-  target: getRequiredInput('TARGET'),
+  target: getInput('TARGET'),
   withCloudfrontInvalidation: toBoolean(
     getInput('WITH_CLOUDFRONT_INVALIDATION'),
     false
