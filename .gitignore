@@ -1,0 +1,4 @@
+node_modules
+.scripts/local-test.sh
+lib
+coverage
