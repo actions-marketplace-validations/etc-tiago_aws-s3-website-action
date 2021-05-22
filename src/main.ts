@@ -42,7 +42,7 @@ const getInputParameters = (): InputParameters => ({
   ),
   cloudFrontDistributionId: getInput('AWS_CLOUDFRONT_DISTRIBUTION_ID'),
   cloudFrontInvalidationPath: getInput('AWS_CLOUDFRONT_INVALIDATION_PATH'),
-  withWebsiteHtml: getInput('WITH_WEBSITE_HTML', false)
+  withWebsiteHtml: toBoolean(getInput('WITH_WEBSITE_HTML'), false)
 });
 
 const getS3Client = ({
