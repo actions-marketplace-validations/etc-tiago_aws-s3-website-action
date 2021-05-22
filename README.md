@@ -14,19 +14,19 @@ Is the same as [aws-s3-docker-action](https://github.com/raulanatol/aws-s3-docke
 
 # Inputs
 
-| Key | Description | Required | Type |
-| --- | ----------- | -------- | ---- |
-| `AWS_ACCESS_KEY_ID` | The  AWS Access Key | **TRUE** | **SECRET** |
-| `AWS_SECRET_ACCESS_KEY` | The AWS secret access key | **TRUE** | **SECRET** |
-| `AWS_REGION` | The region of the bucket | **TRUE** | |
-| `AWS_BUCKET_NAME` | The bucket to sync | **TRUE** | **SECRET** |
-| `SOURCE` | Your local file path that you wish to upload to S3 | **TRUE** | |
-| `TARGET` | The destination of the source after sync in S3 | **TRUE** | |
-| `WITH_DELETE` | If you want to use the [*--delete* flag](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html#synopsis) | | | 
-| `WITH_CLOUDFRONT_INVALIDATION` | If you want to use cloudfront invalidation | | |
-| `AWS_CLOUDFRONT_DISTRIBUTION_ID` | The cloudfront distributions id (use only if you need invalidation) | | **SECRET** |  
-| `AWS_CLOUDFRONT_INVALIDATION_PATH` | Path to the cloudfront invalidation (use only if you need invalidation) | | |  
-| `WITH_WEBSITE_HTML` | If true, the .html will copy and send both, with and without .html | | |  
+| Key                                | Description                                                                                                      | Required | Type       |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ---------- |
+| `AWS_ACCESS_KEY_ID`                | The AWS Access Key                                                                                               | **TRUE** | **SECRET** |
+| `AWS_SECRET_ACCESS_KEY`            | The AWS secret access key                                                                                        | **TRUE** | **SECRET** |
+| `AWS_REGION`                       | The region of the bucket                                                                                         | **TRUE** |            |
+| `AWS_BUCKET_NAME`                  | The bucket to sync                                                                                               | **TRUE** | **SECRET** |
+| `SOURCE`                           | Your local file path that you wish to upload to S3                                                               | **TRUE** |            |
+| `TARGET`                           | The destination of the source after sync in S3                                                                   | **TRUE** |            |
+| `WITH_DELETE`                      | If you want to use the [_--delete_ flag](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html#synopsis) |          |            |
+| `WITH_CLOUDFRONT_INVALIDATION`     | If you want to use cloudfront invalidation                                                                       |          |            |
+| `AWS_CLOUDFRONT_DISTRIBUTION_ID`   | The cloudfront distributions id (use only if you need invalidation)                                              |          | **SECRET** |
+| `AWS_CLOUDFRONT_INVALIDATION_PATH` | Path to the cloudfront invalidation (use only if you need invalidation)                                          |          |            |
+| `WITH_WEBSITE_HTML`                | If true, the .html will copy and send both, with and without .html                                               |          |            |
 
 # Example usage
 
@@ -43,17 +43,17 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Sync to S3
-        uses: raulanatol/aws-s3-js-action@main
+        uses: etc-tiago/aws-s3-website-action@main
         env:
           AWS_ACCESS_KEY_ID:
           AWS_SECRET_ACCESS_KEY:
-          AWS_REGION: 
-          AWS_BUCKET_NAME: 
-          SOURCE: 
-          TARGET: 
-          WITH_DELETE: 
-          WITH_CLOUD_FRONT_INVALIDATION: 
-          AWS_CLOUDFRONT_DISTRIBUTION_ID: 
+          AWS_REGION:
+          AWS_BUCKET_NAME:
+          SOURCE:
+          TARGET:
+          WITH_DELETE:
+          WITH_CLOUD_FRONT_INVALIDATION:
+          AWS_CLOUDFRONT_DISTRIBUTION_ID:
           AWS_CLOUDFRONT_INVALIDATION_PATH:
           WITH_WEBSITE_HTML:
 ```
