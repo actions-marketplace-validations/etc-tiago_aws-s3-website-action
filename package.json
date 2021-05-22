@@ -14,12 +14,12 @@
   },
   "license": "MIT",
   "author": "raulanatol",
-  "main": "lib/main.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "clean": "shx rm -rf dist lib",
     "lint": "eslint --max-warnings 0 . --ext .ts,.tsx",
-    "package": "ncc build --source-map --license licenses.txt",
+    "prepublish": ".bin/ncc build ./src/main.ts -o ./lib",
     "test": "jest",
     "type-check": "tsc --pretty --noEmit"
   },
